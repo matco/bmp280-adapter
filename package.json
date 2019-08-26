@@ -1,7 +1,7 @@
 {
 	"name": "bmp280-adapter",
 	"display_name": "BMP280 sensor adapter",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "BMP280-like sensor adapter for Mozilla WebThings Gateway",
 	"author": "Matthieu Corageoud",
 	"homepage": "https://github.com/matco/bmp280-adapter",
