@@ -14,16 +14,16 @@ class BMP280Device extends Device {
 		super(adapter, id);
 		this.title = deviceDescription.title;
 		this.description = deviceDescription.description;
-		this['@type'] = ['MultiLevelSensor'];
+		this['@type'] = ['TemperatureSensor'];
 
 		//describe temperature
 		const temperatureProperty = new Property(
 			this,
 			'temperature',
 			{
-				'@type': 'NumberProperty',
+				'@type': 'TemperatureProperty',
 				type: 'number',
-				unit: '°C',
+				unit: 'degree celsius',
 				minimum: -273.15,
 				description: 'Temperature in degrees Celsius (°C)',
 				readOnly: true,
@@ -36,7 +36,6 @@ class BMP280Device extends Device {
 			this,
 			'pressure',
 			{
-				'@type': 'NumberProperty',
 				type: 'number',
 				unit: 'hPa',
 				minimum: 0,
