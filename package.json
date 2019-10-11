@@ -1,8 +1,8 @@
 {
 	"name": "bmp280-adapter",
-	"display_name": "BMP280 sensor adapter",
+	"display_name": "BME280/BMP280",
 	"version": "0.0.2",
-	"description": "BMP280-like sensor adapter for Mozilla WebThings Gateway",
+	"description": "BME280/BMP280 sensor adapter for Mozilla WebThings Gateway",
 	"author": "Matthieu Corageoud",
 	"homepage": "https://github.com/matco/bmp280-adapter",
 	"main": "index.js",
@@ -44,7 +44,8 @@
 					"title": "bmp280 1",
 					"description": "BMP280 n°1",
 					"i2cBusNo": 0,
-					"i2cAddress": "0x76"
+					"i2cAddress": "0x76",
+					"isBME280": false
 				}
 			]
 		},
@@ -86,6 +87,10 @@
 							"i2cAddress": {
 								"type": "string",
 								"description": "I²C address for the sensor (hexadecimal 0xFF)"
+							},
+							"isBME280": {
+								"type": "boolean",
+								"description": "Whether or not the sensor is a BME280, which also includes humidity readings"
 							}
 						}
 					}
