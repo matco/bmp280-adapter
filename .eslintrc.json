@@ -36,6 +36,7 @@
 					"if": {"after": false}
 				}
 			}
-		]
+		],
+		"no-console": 0
 	}
 }

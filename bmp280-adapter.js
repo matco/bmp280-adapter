@@ -14,6 +14,7 @@ class BMP280Device extends Device {
 		super(adapter, id);
 		this.title = deviceDescription.title;
 		this.description = deviceDescription.description;
+		this.haveHumidity = deviceDescription.isBME280;
 		this['@type'] = ['TemperatureSensor'];
 
 		//describe temperature
@@ -22,6 +23,7 @@ class BMP280Device extends Device {
 			'temperature',
 			{
 				'@type': 'TemperatureProperty',
+				title: 'Temperature',
 				type: 'number',
 				unit: 'degree celsius',
 				minimum: -273.15,
@@ -37,6 +39,7 @@ class BMP280Device extends Device {
 			'pressure',
 			{
 				type: 'number',
+				title: 'Barometric Pressure',
 				unit: 'hPa',
 				minimum: 0,
 				description: 'Pressure in hectopascal (hPa)',
@@ -44,6 +47,24 @@ class BMP280Device extends Device {
 			}
 		);
 		this.properties.set('pressure', pressureProperty);
+
+		if(this.haveHumidity) {
+			//describe humidity
+			const humidityProperty = new Property(
+				this,
+				'humidity',
+				{
+					type: 'number',
+					title: 'Relative Humidity',
+					unit: 'percent',
+					minimum: 0,
+					maximum: 100,
+					description: 'Relative humidity in percent',
+					readOnly: true,
+				}
+			);
+			this.properties.set('humidity', humidityProperty);
+		}
 
 		//create underlying sensor
 		this.scanInterval = deviceDescription.scanInterval * 1000;
@@ -74,6 +95,14 @@ class BMP280Device extends Device {
 				//same here
 				pressure.setCachedValue(data.pressure_hPa);
 				this.notifyPropertyChanged(pressure);
+
+				if(this.haveHumidity) {
+					//update humidity
+					const humidity = this.properties.get('humidity');
+					//same here
+					humidity.setCachedValue(data.humidity);
+					this.notifyPropertyChanged(humidity);
+				}
 			}).catch(error => {
 				console.log(`Unable to read sensor data: ${error}`);
 			});
