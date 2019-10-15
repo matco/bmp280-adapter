@@ -22,6 +22,7 @@ class BMP280Device extends Device {
 			'temperature',
 			{
 				'@type': 'TemperatureProperty',
+				title: 'Temperature',
 				type: 'number',
 				unit: 'degree celsius',
 				minimum: -273.15,
@@ -37,6 +38,7 @@ class BMP280Device extends Device {
 			'pressure',
 			{
 				type: 'number',
+				title: 'Barometric pressure',
 				unit: 'hPa',
 				minimum: 0,
 				description: 'Pressure in hectopascal (hPa)',
