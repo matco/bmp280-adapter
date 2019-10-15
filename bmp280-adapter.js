@@ -39,7 +39,7 @@ class BMP280Device extends Device {
 			'pressure',
 			{
 				type: 'number',
-				title: 'Barometric Pressure',
+				title: 'Barometric pressure',
 				unit: 'hPa',
 				minimum: 0,
 				description: 'Pressure in hectopascal (hPa)',
