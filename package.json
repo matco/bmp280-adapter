@@ -1,10 +1,17 @@
 {
 	"name": "bmp280-adapter",
 	"display_name": "BME280/BMP280",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"description": "BME280/BMP280 sensor adapter for Mozilla WebThings Gateway",
 	"author": "Matthieu Corageoud",
 	"homepage": "https://github.com/matco/bmp280-adapter",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/matco/bmp280-adapter.git"
+	},
+	"bugs": {
+		"url": "https://github.com/matco/bmp280-adapter/issues"
+	},
 	"main": "index.js",
 	"scripts": {
 		"lint": "eslint ."
@@ -25,9 +32,11 @@
 	},
 	"files": [
 		"LICENSE",
+		"README.md",
 		"SHA256SUMS",
 		"bmp280-adapter.js",
 		"index.js",
+		"manifest.json",
 		"node_modules"
 	],
 	"moziot": {

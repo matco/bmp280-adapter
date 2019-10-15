@@ -1,7 +1,13 @@
 'use strict';
 
-const { Adapter, Device, Property } = require('gateway-addon');
+const {
+	Adapter,
+	Database,
+	Device,
+	Property,
+} = require('gateway-addon');
 const BME280 = require('bme280-sensor');
+const manifest = require('./manifest.json');
 
 const DEFAULT_OPTIONS = {
 	i2cBusNo: 0,
@@ -121,8 +127,8 @@ class BMP280Device extends Device {
 }
 
 class BMP280Adapter extends Adapter {
-	constructor(addonManager, manifest) {
-		super(addonManager, 'BMP280Adapter', manifest.name);
+	constructor(addonManager) {
+		super(addonManager, 'BMP280Adapter', manifest.id);
 		addonManager.addAdapter(this);
 	}
 
@@ -157,13 +163,16 @@ class BMP280Adapter extends Adapter {
 	}
 }
 
-module.exports = function (addonManager, manifest) {
-	console.log('Loading BMP280 adapter');
-	const adapter = new BMP280Adapter(addonManager, manifest.name);
-	manifest.moziot.config.sensors.forEach((sensor, index) => {
-		const config = Object.assign({}, sensor);
-		config.scanInterval = manifest.moziot.config.scanInterval;
-		adapter.addDevice(`bmp280-${index}`, config);
-	});
-	console.log(`Adapter loaded with ${manifest.moziot.config.sensors.length} sample device(s)`);
+module.exports = function (addonManager) {
+	const adapter = new BMP280Adapter(addonManager, manifest.id);
+
+	const db = new Database(manifest.id);
+	db.open().then(() => {
+		return db.loadConfig();
+	}).then((config) => {
+		config.sensors.forEach((sensor, index) => {
+			sensor.scanInterval = config.scanInterval;
+			adapter.addDevice(`bmp280-${index}`, sensor);
+		});
+	}).catch(console.error);
 };
