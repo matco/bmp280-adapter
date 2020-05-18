@@ -1,5 +1,3 @@
-'use strict';
-
 const {
 	Adapter,
 	Database,
@@ -11,7 +9,7 @@ const manifest = require('./manifest.json');
 
 const DEFAULT_OPTIONS = {
 	i2cBusNo: 0,
-	i2cAddress: BME280.BME280_DEFAULT_I2C_ADDRESS() // defaults to 0x77
+	i2cAddress: BME280.BME280_DEFAULT_I2C_ADDRESS() //defaults to 0x77
 };
 
 class BMP280Device extends Device {
