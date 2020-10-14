@@ -1,4 +1,4 @@
-# BMP280 adapter for Mozilla Things Gateway
+# BMP280 adapter for WebThings Gateway
 
 ## Manual installation
 Copy the project folder into ~/.mozilla-iot/addons:
@@ -11,7 +11,7 @@ Then connect on the device and launch packaging script (this may take a long tim
 cd .mozilla-iot/addons/bmp280-adapter && ./package.sh
 ```
 
-Finally, restart Mozilla Things Gateway:
+Finally, restart WebThings Gateway:
 ```
 sudo systemctl restart mozilla-iot-gateway.service
 ```
