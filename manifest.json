@@ -1,6 +1,6 @@
 {
   "author": "Matthieu Corageoud",
-  "description": "BME280/BMP280 sensor adapter for Mozilla WebThings Gateway",
+  "description": "BME280/BMP280 sensor adapter for WebThings Gateway",
   "gateway_specific_settings": {
     "webthings": {
       "exec": "{nodeLoader} {path}",

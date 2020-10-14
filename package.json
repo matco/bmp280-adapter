@@ -2,7 +2,7 @@
 	"name": "bmp280-adapter",
 	"display_name": "BME280/BMP280",
 	"version": "0.1.2",
-	"description": "BME280/BMP280 sensor adapter for Mozilla WebThings Gateway",
+	"description": "BME280/BMP280 sensor adapter for WebThings Gateway",
 	"author": "Matthieu Corageoud",
 	"homepage": "https://github.com/matco/bmp280-adapter",
 	"repository": {
@@ -17,8 +17,6 @@
 		"lint": "eslint ."
 	},
 	"keywords": [
-		"mozilla",
-		"iot",
 		"adapter",
 		"i2c",
 		"bmp280"
