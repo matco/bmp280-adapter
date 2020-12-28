@@ -1,7 +1,7 @@
 {
 	"name": "bmp280-adapter",
 	"display_name": "BME280/BMP280",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "BME280/BMP280 sensor adapter for WebThings Gateway",
 	"author": "Matthieu Corageoud",
 	"homepage": "https://github.com/matco/bmp280-adapter",
